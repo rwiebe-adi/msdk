@@ -73,7 +73,14 @@ typedef struct {
 } mxc_spi_reva2_handle_data_t;
 // clang-format on
 
-static volatile mxc_spi_reva2_handle_data_t STATES[MXC_SPI_INSTANCES];
+// clang-format off
+static volatile mxc_spi_reva2_handle_data_t STATES[MXC_SPI_INSTANCES] = {
+    [0 ... MXC_SPI_INSTANCES - 1] = {
+        .tx_dma_ch = E_NO_DEVICE,
+        .rx_dma_ch = E_NO_DEVICE
+    }
+};
+// clang-format on
 
 /* **** Private Functions **** */
 
